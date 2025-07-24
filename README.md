@@ -38,42 +38,6 @@ The dataset contains **600,000 training** and **400,000 test records** with thes
 | `number_of_major_vessels` | Major vessels (0-3) in fluoroscopy | Categorical |
 | `thal` | Thalassemia type (3,6,7) | Categorical |
 
-## Technical Implementation
-
-### Libraries Used
-```python
-import pandas as pd
-import numpy as np
-import matplotlib.pyplot as plt
-import seaborn as sns
-from sklearn.preprocessing import StandardScaler
-from sklearn.model_selection import train_test_split
-from sklearn.linear_model import LogisticRegression
-from sklearn.ensemble import RandomForestClassifier
-import torch
-import torch.nn as nn
-
-## Key Steps
-
-###  Data Preprocessing
-- **Handling data types and outliers**  
-  Fixed incorrect types and clipped extreme values
-- **One-Hot Encoding for categorical features**  
-  Transformed: `chest`, `resting_electrocardiographic_results`, `slope`, `thal`
-- **StandardScaler normalization**  
-  Scaled all features to zero mean and unit variance
-- **Class distribution analysis**  
-  Balanced dataset: 55.6% healthy (0) vs 44.4% diseased (1)
-
-###  Exploratory Analysis
-- **Correlation matrix visualization**  
-  ![Correlation Heatmap](https://correlation_heatmap.png)
-- **Feature-target correlation plot**  
-  Identified key predictors
-- **Scatter plots for key features**  
-  ST depression vs Max heart rate with regression lines
-- **Boxplot analysis for outliers**  
-  Processed unrealistic values in BP, cholesterol, and heart rate
 
 ###  Model Development
 | Model                      | Framework      | 
