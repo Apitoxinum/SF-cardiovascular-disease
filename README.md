@@ -1,6 +1,94 @@
 # SF-cardiovascular-disease
 
-## 🔍 Источник:
+## Introduction
+Welcome to the SF-cardiovascular-disease project repository. This project leverages machine learning to predict cardiovascular disease risk based on clinical parameters. With heart disease being a leading global cause of mortality, this system aims to assist in early detection and preventive healthcare.
+
+## Objective
+**Primary Goal:** Develop and compare machine learning models that can accurately identify individuals at high risk of heart disease using 13 key clinical features.
+
+## Project Overview
+This comprehensive analysis includes:
+1. Data preprocessing and outlier handling
+2. Exploratory Data Analysis (EDA) with visualizations
+3. Correlation analysis of clinical features
+4. Model training and evaluation of:
+   - Logistic Regression
+   - Random Forest Classifier
+   - Neural Network (PyTorch)
+5. Model deployment with inference script
+
+## Dataset Features
+[(https://www.kaggle.com/competitions/tech-weekend-data-science-hackathon/data)]
+
+The dataset contains **600,000 training** and **400,000 test records** with these clinical parameters:
+
+| Feature | Description | Type |
+|---------|-------------|------|
+| `age` | Patient age | Numerical |
+| `sex` | Gender (0=Female, 1=Male) | Categorical |
+| `chest` | Chest pain type (1-4) | Categorical |
+| `resting_blood_pressure` | Blood pressure at rest (mmHg) | Numerical |
+| `serum_cholestoral` | Cholesterol level (mg/dl) | Numerical |
+| `fasting_blood_sugar` | Fasting glucose >120 mg/dl | Binary |
+| `resting_electrocardiographic_results` | ECG results at rest | Categorical |
+| `maximum_heart_rate_achieved` | Max heart rate during test | Numerical |
+| `exercise_induced_angina` | Exercise-triggered chest pain | Binary |
+| `oldpeak` | ST depression induced by exercise | Numerical |
+| `slope` | ST segment slope during peak exercise | Categorical |
+| `number_of_major_vessels` | Major vessels (0-3) in fluoroscopy | Categorical |
+| `thal` | Thalassemia type (3,6,7) | Categorical |
+
+## Technical Implementation
+
+### Libraries Used
+```python
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+from sklearn.preprocessing import StandardScaler
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LogisticRegression
+from sklearn.ensemble import RandomForestClassifier
+import torch
+import torch.nn as nn
+
+## Key Steps
+
+###  Data Preprocessing
+- **Handling data types and outliers**  
+  Fixed incorrect types and clipped extreme values
+- **One-Hot Encoding for categorical features**  
+  Transformed: `chest`, `resting_electrocardiographic_results`, `slope`, `thal`
+- **StandardScaler normalization**  
+  Scaled all features to zero mean and unit variance
+- **Class distribution analysis**  
+  Balanced dataset: 55.6% healthy (0) vs 44.4% diseased (1)
+
+###  Exploratory Analysis
+- **Correlation matrix visualization**  
+  ![Correlation Heatmap](https://correlation_heatmap.png)
+- **Feature-target correlation plot**  
+  Identified key predictors
+- **Scatter plots for key features**  
+  ST depression vs Max heart rate with regression lines
+- **Boxplot analysis for outliers**  
+  Processed unrealistic values in BP, cholesterol, and heart rate
+
+###  Model Development
+| Model                      | Framework      | 
+|----------------------------|----------------|
+| Logistic Regression        | Scikit-learn   |
+| Random Forest Classifier   | Scikit-learn   |
+| Neural Network (3-layer FC)| PyTorch        |
+
+**Metrics tracked:**  
+- Accuracy - Overall correctness
+- F1 Score - Balance of precision/recall
+- ROC-AUC - Class separation quality
+
+
+## 🔍 Статья о применении моделей машинного обучения для предсказания ССЗ:
 [(https://www.sciencedirect.com/science/article/pii/S2772442522000016)}
 
 ## English Version
